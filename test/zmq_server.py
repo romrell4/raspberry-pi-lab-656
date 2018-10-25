@@ -1,12 +1,12 @@
 import zmq
+import json
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind("tcp://*:1111")
+socket.bind("tcp://*:1234")
 
 while True:
     print("Waiting for request...")
-    message = socket.recv()
-    print("Received message: {}".format(message.decode("utf-8")))
-
-    socket.send("OK".encode("utf-8"))
+    message = socket.recv_json()
+    print("Received message: {}\nSending message...".format(message))
+    socket.send_json({"status": "OK"})
