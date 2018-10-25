@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import zmq
+import signal
 from gpiozero import Button
 
 class RaspberryPi:
@@ -36,3 +37,5 @@ act_button.when_pressed = lambda: pi.send("act")
 # while True:
 #     command = input("Command: ")
 #     pi.send(command)
+
+signal.pause()
