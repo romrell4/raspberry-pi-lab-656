@@ -55,7 +55,7 @@ class ThreadedServer:
                     else:
                         return {"error": "No response from handler code"}
                 else:
-                    print("Unknown action: `{}` sent from client: `{}`".format(action, client_id))
+                    print("Unknown action: '{}' sent from client: '{}'".format(action, client_id))
             else:
                 print("Request from unknown client: {}".format(client_id))
         else:
@@ -81,6 +81,9 @@ class Client:
 
     def led_on(self):
         self.send({"action": "led_on"})
+
+    def led_off(self):
+        self.send({"action": "led_off"})
 
 
 if __name__ == "__main__":
