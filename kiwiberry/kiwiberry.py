@@ -33,9 +33,16 @@ class RaspberryPi:
             if "action" in request:
                 action = request["action"]
                 if action == "led_on":
+                    print("Turning led on")
                     led.on()
+                    socket.send_json({"status": "OK"})
                 elif action == "led_off":
+                    print("Turning led off")
                     led.off()
+                    socket.send_json({"status": "OK"})
+                else:
+                    print("Unknown action")
+                    socket.send_json({"error": "Unknown action: {}".format(action)})
             else:
                 socket.send_json({"error": "No action in request"})
 
