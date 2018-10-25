@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
-from threading import Thread
 import zmq
-import utilities
-import json
 from gpiozero import LED
 
 led = LED(17)
