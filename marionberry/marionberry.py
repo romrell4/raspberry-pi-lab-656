@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import zmq
-# from gpiozero import Button
+from gpiozero import Button
 
 class RaspberryPi:
     def __init__(self, hostname, port):
@@ -25,14 +25,14 @@ class RaspberryPi:
         print("Response from server: {}".format(self.socket.recv_json()))
 
 
-# edit_button = Button(3)
-# act_button = Button(4)
+edit_button = Button(3)
+act_button = Button(4)
 
 pi = RaspberryPi("marionberry", 4321)
 
-# edit_button.when_pressed = lambda: pi.send("edit")
-# act_button.when_pressed = lambda: pi.send("act")
+edit_button.when_pressed = lambda: pi.send("edit")
+act_button.when_pressed = lambda: pi.send("act")
 
-while True:
-    command = input("Command: ")
-    pi.send(command)
+# while True:
+#     command = input("Command: ")
+#     pi.send(command)
